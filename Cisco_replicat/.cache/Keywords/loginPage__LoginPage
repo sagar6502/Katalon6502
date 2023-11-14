@@ -1,5 +1,5 @@
 {
-  "keywordFileContentHash": "450E3F6E1D1931165F805CDC8E8F79E3",
+  "keywordFileContentHash": "D9460BA40D3FC2E5FC3D80DDC58A78CA",
   "keywordClasses": [
     {
       "name": "loginPage.LoginPage",
@@ -7,24 +7,6 @@
         {
           "name": "refreshBrowser",
           "parameters": []
-        },
-        {
-          "name": "clickElement",
-          "parameters": [
-            {
-              "name": "to",
-              "initialExpression": "",
-              "type": {
-                "fullClassName": "com.kms.katalon.core.testobject.TestObject",
-                "unresolvedClassName": "TestObject",
-                "isArray": false,
-                "isGnericsPlaceHolder": false,
-                "hasImmutableClassName": false,
-                "genericsTypes": [],
-                "errorOnParsing": false
-              }
-            }
-          ]
         },
         {
           "name": "navigateURL",
@@ -43,6 +25,10 @@
               }
             }
           ]
+        },
+        {
+          "name": "clickElement",
+          "parameters": []
         },
         {
           "name": "getHtmlTableRows",

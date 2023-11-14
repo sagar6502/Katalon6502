@@ -1,10 +1,14 @@
 package loginPage
 
 import testDriver.Driver
+
+import loc.Locators
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.interactions.Actions
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.exception.StepErrorException
 import com.kms.katalon.core.testobject.TestObject
@@ -14,11 +18,14 @@ import com.kms.katalon.core.webui.exception.WebElementNotFoundException
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+//import loc.Locators
+
 
 class LoginPage {
 
+	WebDriver driver = Driver.getDriver()
+	Locators locators = new Locators()
 
-	
 	/**
 	 * Refresh browser
 	 */
@@ -30,23 +37,7 @@ class LoginPage {
 		KeywordUtil.markPassed("Refresh successfully")
 	}
 
-	/**
-	 * Click element
-	 * @param to Katalon test object
-	 */
-	@Keyword
-	def clickElement(TestObject to) {
-		try {
-			WebElement element = WebUiBuiltInKeywords.findWebElement(to);
-			KeywordUtil.logInfo("Clicking element")
-			element.click()
-			KeywordUtil.markPassed("Element has been clicked")
-		} catch (WebElementNotFoundException e) {
-			KeywordUtil.markFailed("Element not found")
-		} catch (Exception e) {
-			KeywordUtil.markFailed("Fail to click on element")
-		}
-	}
+
 
 	/**
 	 * openBrowser
@@ -55,20 +46,34 @@ class LoginPage {
 	@Keyword
 	def navigateURL(String URL) {
 		try {
-			
-			println(URL)
-			WebUI.openBrowser('')
-			WebDriver driver = DriverFactory.getWebDriver()
-			//WebUI.navigateToUrl(URL)
 			driver.get(URL)
-			println('SS3')
-			
 			KeywordUtil.logInfo("Navigating to URL :: "+URL)
-			KeywordUtil.markPassed("Hitting the URL")
+			KeywordUtil.markPassed("Navigated Successfully!")
 		} catch (StepErrorException e) {
 			KeywordUtil.markErrorAndStop("URL is non-responsive")
 		} catch (Exception e) {
 			KeywordUtil.markErrorAndStop("Fail to load the website")
+		}
+		//div[@class='_3OO5Xc'])[1]
+		driver.findElement(By.xpath("(//div[@class='_3OO5Xc'])[1]")).sendKeys("Mobiles")
+	}
+	
+	/**
+	 * Click element
+	 * @param to Katalon test object
+	 */
+	@Keyword
+	def clickElement() {
+		try {
+			driver.sleep(5000)
+			driver.switchTo().frame(0)
+			Actions ac = new Actions(driver)
+			ac.moveToElement("//div[@id='container']").click().build().perform()
+			KeywordUtil.markPassed("Element has been clicked")
+		} catch (WebElementNotFoundException e) {
+			KeywordUtil.markFailed("Element not found")
+		} catch (Exception e) {
+			KeywordUtil.markFailed("Fail to click on element")
 		}
 	}
 
