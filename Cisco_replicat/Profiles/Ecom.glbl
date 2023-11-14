@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalVariableEntities>
    <description></description>
-   <name>default</name>
+   <name>Ecom</name>
    <tag></tag>
-   <defaultProfile>true</defaultProfile>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'Chrome'</initValue>
-      <name>OS</name>
-   </GlobalVariableEntity>
+   <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
       <initValue>'https://www.flipkart.com/'</initValue>
